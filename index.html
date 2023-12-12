@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop wai-aria</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div
+      id="overlay"
+      class="fixed hidden w-full h-full top-0 left-0 right-0 bottom-0 bg-slate-800 z-10 opacity-10"
+    >
+      Overlay
+    </div>
+
+    <button
+      id="btn"
+      aria-controls="accessibleModal"
+      aria-expanded="false"
+      class="accesibleModal m-5 text-xl border p-2"
+    >
+      Click here
+    </button>
+
+    <div
+      id="accessibleModal"
+      role="modal"
+      aria-describedby="description"
+      hidden
+      aria-labelledby="modalTitle"
+      class="p-2 bg-pink-300 absolute z-20 m-32"
+    >
+      <h2 id="modalTitle" class="text-2xl">Exempel på modalfönster</h2>
+      <p id="description">Här är lite text i modalfönstret.</p>
+      <button id="closeModalBtn" class="pr-2 pl-2">Stäng</button>
+    </div>
+
+
+
+
+    <button id="btn2" aria-controls="accesibleModal">Click here2</button>
+    <dialog id="accessibleDialog" aria-modal="true" aria-labelledby="btn2">
+      <h2>Exempel på tillgängligt modalfönster med &lt;dialog&gt;</h2>
+      <p id="description">Här är innehållet i modalfönstret.</p>
+      <button id="closeDialogBtn">Stäng</button>
+    </dialog>
+
+<!-- Fördelar med  att använda <dialog>: Det är ett semantiskt html element där vissa funktioner/egenskaper redan är inbyggda,
+  och som gör att man därför inte behöver skriva in dessa egenskaper manuellt. Det underlättar för tillgängligheten
+  om man använder semantiska element så som <dialog> och det underlättar även för en själv. Det blir enklare kod att
+    handskas med. Det blir även enklare för skärmavläsare att läsa upp saker och ting korrekt. -->
+
+
+    <button
+      id="menuButton"
+      aria-controls="menuContent"
+      aria-expanded="false"
+      aria-haspopup="menu"
+    >
+      Meny
+    </button>
+    <nav
+      id="menuContent"
+      aria-labelledby="menuButton"
+      aria-orientation="vertical"
+      class="hidden"
+    >
+      <ul>
+        <li><a href="#">Hem</a></li>
+        <li><a href="#">Om oss</a></li>
+        <li><a href="#">Tjänster</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
